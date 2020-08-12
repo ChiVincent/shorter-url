@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Url;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ShorterTest extends TestCase
 {
+    use RefreshDatabase;
     use WithFaker;
 
     public function test_base()
@@ -17,10 +19,12 @@ class ShorterTest extends TestCase
         ]);
 
         $response->assertSuccessful();
+        $this->assertDatabaseHas('urls', ['url' => $url]);
         $response->assertJson([
             'message' => 'shorter.success',
             'data' => [
                 'original_url' => $url,
+                'shorted_url' => config('app.url') . '/' . Url::where('url', $url)->first()->id,
             ],
         ]);
     }
