@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\DatabaseService;
 use Illuminate\Http\Request;
+use App\Services\DatabaseService;
 
 class ShorterController extends Controller
 {

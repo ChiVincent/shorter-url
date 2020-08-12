@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Services;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Url;
 use Tests\TestCase;
 use App\Services\DatabaseService;
-use App\Url;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DatabaseServiceTest extends TestCase

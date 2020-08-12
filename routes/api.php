@@ -16,4 +16,3 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/', 'ShorterController')
     ->name('shorter');
-
