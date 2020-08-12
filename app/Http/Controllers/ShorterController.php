@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ShorterController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         $request->validate(['url' => 'required|url']);
 
