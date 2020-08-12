@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\DatabaseService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class RestorerController extends Controller
