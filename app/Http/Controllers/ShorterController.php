@@ -8,7 +8,7 @@ class ShorterController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $request->validate(['url' => 'required|string|url']);
+        $request->validate(['url' => 'required|url']);
 
         return [
             'message' => 'shorter.success',
