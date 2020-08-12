@@ -24,8 +24,7 @@ class DatabaseService
 
     protected function buildUrl(Url $url): string
     {
-        // TODO: use route() instead of build by config('app.url')
-        return config('app.url') . '/' . Hashids::encode($url->id);
+        return route('restorer', ['token' => Hashids::encode($url->id)]);
     }
 
     protected function decode(string $token): ?int
