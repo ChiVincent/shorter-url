@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Services\DatabaseService;
+use App\Url;
 
 class DatabaseServiceTest extends TestCase
 {
@@ -21,5 +22,15 @@ class DatabaseServiceTest extends TestCase
 
         $this->assertDatabaseHas('urls', ['url' => $url]);
         $this->assertStringStartsWith(config('app.url'), $result);
+    }
+
+    public function test_restorer()
+    {
+        $url = Url::create(['url' => $originalUrl = $this->faker->url]);
+        $service = app(DatabaseService::class);
+
+        $result = $service->restorer($url->id);
+
+        $this->assertEquals($result, $originalUrl);
     }
 }
