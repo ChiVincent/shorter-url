@@ -6,6 +6,7 @@ use App\Url;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ShorterTest extends TestCase
 {
@@ -24,7 +25,7 @@ class ShorterTest extends TestCase
             'message' => 'shorter.success',
             'data' => [
                 'original_url' => $url,
-                'shorted_url' => config('app.url') . '/' . Url::where('url', $url)->first()->id,
+                'shorted_url' => config('app.url') . '/' . Hashids::encode(Url::where('url', $url)->first()->id),
             ],
         ]);
     }
