@@ -27,12 +27,12 @@ class DatabaseServiceTest extends TestCase
 
     public function test_restorer()
     {
-        $url = Url::create(['url' => $originalUrl = $this->faker->url]);
+        $url = factory(Url::class)->create();
         $service = app(DatabaseService::class);
 
         $result = $service->restorer($url->id);
 
-        $this->assertEquals($result, $originalUrl);
+        $this->assertEquals($result, $url->url);
     }
 
     public function test_restorer_not_found()
