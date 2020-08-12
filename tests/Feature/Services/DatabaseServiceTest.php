@@ -5,6 +5,7 @@ namespace Tests\Feature\Services;
 use App\Url;
 use Tests\TestCase;
 use App\Services\DatabaseService;
+use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -30,7 +31,7 @@ class DatabaseServiceTest extends TestCase
         $url = factory(Url::class)->create();
         $service = app(DatabaseService::class);
 
-        $result = $service->restorer($url->id);
+        $result = $service->restorer(Hashids::encode($url->id));
 
         $this->assertEquals($result, $url->url);
     }

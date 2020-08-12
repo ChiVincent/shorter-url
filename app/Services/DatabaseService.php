@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Url;
+use Vinkla\Hashids\Facades\Hashids;
 
 class DatabaseService
 {
@@ -23,14 +24,11 @@ class DatabaseService
 
     protected function buildUrl(Url $url): string
     {
-        // TODO: use route() instead of build by config('app.url')
-        // TODO: Encode $url->id by hashid
-        return config('app.url') . '/' . $url->id;
+        return route('restorer', ['token' => Hashids::encode($url->id)]);
     }
 
-    protected function decode(string $token): string
+    protected function decode(string $token): ?int
     {
-        // TODO： Decode $token by hashid
-        return $token;
+        return Hashids::decode($token)[0] ?? null;
     }
 }
