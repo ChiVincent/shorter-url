@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Services\DatabaseService;
 use App\Url;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DatabaseServiceTest extends TestCase
 {
@@ -32,5 +33,13 @@ class DatabaseServiceTest extends TestCase
         $result = $service->restorer($url->id);
 
         $this->assertEquals($result, $originalUrl);
+    }
+
+    public function test_restorer_not_found()
+    {
+        $service = app(DatabaseService::class);
+
+        $this->expectException(ModelNotFoundException::class);
+        $service->restorer(1); // Doesn't exist.
     }
 }
