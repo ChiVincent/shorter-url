@@ -28,9 +28,8 @@ class DatabaseService
         return config('app.url') . '/' . Hashids::encode($url->id);
     }
 
-    protected function decode(string $token): string
+    protected function decode(string $token): ?int
     {
-        // TODO： Decode $token by hashid
-        return $token;
+        return Hashids::decode($token)[0] ?? null;
     }
 }

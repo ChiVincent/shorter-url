@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Url;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Vinkla\Hashids\Facades\Hashids;
 
 class RestorerTest extends TestCase
 {
@@ -14,7 +15,7 @@ class RestorerTest extends TestCase
     {
         $url = factory(Url::class)->create();
 
-        $response = $this->get(route('restorer', ['token' => $url->id]));
+        $response = $this->get(route('restorer', ['token' => Hashids::encode($url->id)]));
 
         $response->assertRedirect($url->url);
     }
