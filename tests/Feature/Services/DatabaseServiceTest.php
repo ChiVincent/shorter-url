@@ -5,10 +5,10 @@ namespace Tests\Feature\Services;
 use App\Url;
 use Tests\TestCase;
 use App\Services\DatabaseService;
+use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Vinkla\Hashids\Facades\Hashids;
 
 class DatabaseServiceTest extends TestCase
 {

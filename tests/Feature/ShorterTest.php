@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Url;
 use Tests\TestCase;
+use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Vinkla\Hashids\Facades\Hashids;
 
 class ShorterTest extends TestCase
 {

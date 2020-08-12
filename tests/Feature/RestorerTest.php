@@ -4,8 +4,8 @@ namespace Tests\Feature;
 
 use App\Url;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Vinkla\Hashids\Facades\Hashids;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RestorerTest extends TestCase
 {
