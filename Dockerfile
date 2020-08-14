@@ -37,7 +37,10 @@ RUN apt-get update -yq && apt-get install -y nginx supervisor && \
     mkdir -p /var/log/supervisor && \
     cp .docker/conf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf && \
     cp .docker/conf/supervisor/nginx.conf /etc/supervisor/conf.d/nginx.conf && \
-    cp .docker/conf/supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
-
+    cp .docker/conf/supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf && \
+    # Setup laravel
+    chmod -R 777 bootstrap/cache storage && \
+    php artisan route:cache && php artisan view:cache && php artisan config:cache && \
+    php artisan migrate --force
 
 CMD ["/usr/bin/supervisord"]
