@@ -26,9 +26,10 @@ RUN apt-get update -yq && apt-get install -y nginx supervisor && \
 # Install PHP Extensions
     docker-php-ext-install bcmath opcache && \
 # Setup Nginx, PHP-FPM and supervisor
-    # Make supervisor log directory
-    mkdir -p /var/log/supervisor && \
+    # Setup Nginx
+    cp .docker/conf/www.conf /etc/nginx/conf.d/www.conf && \
     # Setup suervisor
+    mkdir -p /var/log/supervisor && \
     cp .docker/conf/supervisor/nginx.conf /etc/supervisor/conf.d/nginx.conf && \
     cp .docker/conf/supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
 
