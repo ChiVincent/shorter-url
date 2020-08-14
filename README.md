@@ -50,3 +50,7 @@ The logged file will be stored at:
 
 - Nginx: `storage/logs/nginx`
 - Laravel： `storage/logs/laravel.log`
+
+## LICENSE
+
+This web application is under [MIT](https://opensource.org/licenses/MIT) license.
