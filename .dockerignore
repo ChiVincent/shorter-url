@@ -1,3 +1,7 @@
+/.git
+/database/*.sqlite
+
+# From .gitignore
 /node_modules
 /public/hot
 /public/storage
