@@ -28,6 +28,9 @@ RUN apt-get update -yq && apt-get install -y nginx supervisor && \
 # Setup Nginx, PHP-FPM and supervisor
     # Setup Nginx
     cp .docker/conf/www.conf /etc/nginx/conf.d/www.conf && \
+    # Setup PHP
+    cp .docker/conf/php/php.ini /usr/local/etc/php && \
+    cp .docker/conf/php/fpm.conf /usr/local/etc/php-fpm.d/www.conf && \
     # Setup suervisor
     mkdir -p /var/log/supervisor && \
     cp .docker/conf/supervisor/nginx.conf /etc/supervisor/conf.d/nginx.conf && \
