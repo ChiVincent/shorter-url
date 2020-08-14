@@ -1,4 +1,4 @@
-FROM composer AS php_builder
+FROM composer:2 AS php_builder
 
 WORKDIR /code
 

@@ -1,0 +1,16 @@
+/.git
+
+# From .gitignore
+/node_modules
+/public/hot
+/public/storage
+/public/js
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.logu
+yarn-error.log
