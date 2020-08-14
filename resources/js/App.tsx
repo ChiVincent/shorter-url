@@ -19,19 +19,25 @@ const useStyles = makeStyles(() =>
     })
 )
 
-export default function App() {
+function Shorten() {
     const classes = useStyles();
 
+    return (
+        <Box className="m-b-md">
+            <TextField className={classes.shortenInput} variant="outlined" placeholder="Shorten your link"></TextField>
+            <Button className={classes.shortenButton} variant="contained" color="primary">Shorten</Button>
+        </Box>
+    );
+}
+
+export default function App() {
     return (
         <React.Fragment>
             <CssBaseline />
             <div className="flex-center position-ref full-height">
                 <div className="content">
                     <h1 className="title">Shorter URL</h1>
-                    <Box className="m-b-md">
-                        <TextField className={classes.shortenInput} variant="outlined" placeholder="Shorten your link"></TextField>
-                        <Button className={classes.shortenButton} variant="contained" color="primary">Shorten</Button>
-                    </Box>
+                    <Shorten />
                 </div>
         </div>
         </React.Fragment>
