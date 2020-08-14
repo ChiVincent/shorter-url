@@ -1,5 +1,7 @@
 name: Laravel
 
+on: [push, pull_request]
+
 jobs:
   laravel-tests:
 
@@ -19,19 +21,3 @@ jobs:
         run: php artisan test
         env:
           APP_ENV: test
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build -t docker.pkg.github.com/chivincent/shorter-url/app .
-      - name: Publish to GitHub Package
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: chivincent/chastity/app
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
