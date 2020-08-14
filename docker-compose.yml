@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    app:
+        build: .
+        ports:
+            - 8080:80
+        volumes:
+            - ./database/database.sqlite:/www/database/database.sqlite
+            - ./storage/logs/nginx/:/var/log/nginx/
+            - ./storage/logs/laravel.log:/www/storage/logs/laravel.log
+        env_file: .env
