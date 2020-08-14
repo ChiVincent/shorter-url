@@ -16,6 +16,8 @@ RUN npm install && npm run production
 
 FROM php:fpm
 
+WORKDIR /www
+
 COPY --from=php_builder /code .
 COPY --from=node_builder /code/public ./public
 
@@ -25,6 +27,9 @@ RUN apt-get update -yq && apt-get install -y nginx supervisor && \
     docker-php-ext-install bcmath opcache && \
 # Setup Nginx, PHP-FPM and supervisor
     # Make supervisor log directory
-    mkdir -p /var/log/supervisor
+    mkdir -p /var/log/supervisor && \
+    # Setup suervisor
+    cp .docker/conf/supervisor/nginx.conf /etc/supervisor/conf.d/nginx.conf && \
+    cp .docker/conf/supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
 
 CMD ["/usr/bin/supervisord"]
