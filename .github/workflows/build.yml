@@ -17,7 +17,7 @@ jobs:
       - name: Publish to GitHub Package
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: chivincent/chastity/app
+          name: chivincent/shorter-url/app
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
