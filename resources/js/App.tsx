@@ -86,7 +86,7 @@ export default function App() {
                     <h1 className="title">Shorter URL</h1>
                     <Shorten />
                 </div>
-        </div>
+            </div>
         </React.Fragment>
     );
 }
