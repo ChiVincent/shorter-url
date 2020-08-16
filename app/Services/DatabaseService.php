@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Url;
+use App\Contracts\URLExtractor;
 use Vinkla\Hashids\Facades\Hashids;
 
-class DatabaseService
+class DatabaseService implements URLExtractor
 {
     public function shorter(string $url): string
     {
