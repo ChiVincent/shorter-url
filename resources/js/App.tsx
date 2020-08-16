@@ -51,6 +51,12 @@ function Shorten() {
         copy(url);
     }
 
+    async function handleEnterPressed(event: React.KeyboardEvent<HTMLDivElement>) {
+        if (event.nativeEvent.keyCode === 13 && !isShorted) { // Enter pressed
+            await handleShortenClick();
+        }
+    }
+
     return (
         <Box className="m-b-md">
             <TextField 
@@ -58,6 +64,7 @@ function Shorten() {
                 variant="outlined"
                 placeholder="Shorten your link"
                 onChange={handleShorternInputChange}
+                onKeyPress={handleEnterPressed}
                 value={url}
             />
             <Button 
@@ -79,7 +86,7 @@ export default function App() {
                     <h1 className="title">Shorter URL</h1>
                     <Shorten />
                 </div>
-        </div>
+            </div>
         </React.Fragment>
     );
 }
