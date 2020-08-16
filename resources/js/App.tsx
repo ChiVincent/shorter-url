@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import copy from 'clipboard-copy';
 import '../css/App.css';
 
 const useStyles = makeStyles(() => 
@@ -47,7 +48,13 @@ function Shorten() {
     }
 
     function handleCopyClick() {
-        // TODO
+        copy(url);
+    }
+
+    async function handleEnterPressed(event: React.KeyboardEvent<HTMLDivElement>) {
+        if (event.nativeEvent.keyCode === 13 && !isShorted) { // Enter pressed
+            await handleShortenClick();
+        }
     }
 
     return (
@@ -57,6 +64,7 @@ function Shorten() {
                 variant="outlined"
                 placeholder="Shorten your link"
                 onChange={handleShorternInputChange}
+                onKeyPress={handleEnterPressed}
                 value={url}
             />
             <Button 
@@ -78,7 +86,7 @@ export default function App() {
                     <h1 className="title">Shorter URL</h1>
                     <Shorten />
                 </div>
-        </div>
+            </div>
         </React.Fragment>
     );
 }
