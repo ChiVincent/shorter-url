@@ -35,6 +35,7 @@ We use docker-compose to manage the dependencies.
 ```
 cp .env.example .env
 
+echo '' > database/database.sqlite
 docker-compose up
 ```
 
